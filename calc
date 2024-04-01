@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+
+import argparse
+import sys
+from pathlib import Path
+from lexer import lex
+from parser import parse
+from interpreter import interpret
+from variables import collect_variables
+from codegen import codegen
+
+parser = argparse.ArgumentParser(
+    description="Interpret or compile a calc program."
+)
+parser.add_argument(
+    "-c",
+    "--compile",
+    action="store_true",
+    help="Compiles the calc program to a C program instead of interpretating it",
+)
+parser.add_argument(
+    "file",
+    type=argparse.FileType("r"),
+    help="File with program",
+)
+
+args = parser.parse_args()
+
+with args.file as file:
+    tokens = lex(file)
+    if tokens is None:
+        sys.exit(f"Lexing error")
+
+    expr = parse(tokens)
+    if expr is None:
+        sys.exit(f"Parse error")
+
+    variables = collect_variables(expr)
+
+    if args.compile:
+        code = codegen(variables, expr)
+        c_filename = Path(file.name).stem + ".c"
+        f = open(c_filename, "w")
+        f.write(code)
+        print(f"Compiled program to {c_filename}")
+    else:
+        env = {
+            var: int(input(f"Give an integer value to {var}: "))
+            for var in variables
+        }
+        val = interpret(env, expr)
+        if val is None:
+            sys.exit(f"Interpretation error")
+
+        print(f"result = {val}")
