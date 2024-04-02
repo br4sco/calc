@@ -1,4 +1,4 @@
-from parser import Op, EOp
+from calcparser import Op, EOp
 
 
 def interpret(env, expr):

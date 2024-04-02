@@ -1,4 +1,4 @@
-from parser import EOp
+from calcparser import EOp
 
 
 def collect_variables(expr):
