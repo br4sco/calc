@@ -3,11 +3,11 @@
 import argparse
 import sys
 from pathlib import Path
-from lexer import lex
-from parser import parse
-from interpreter import interpret
-from variables import collect_variables
-from codegen import codegen
+from calclexer import lex
+from calcparser import parse
+from calcinterpreter import interpret
+from calcvariables import collect_variables
+from calccodegen import codegen
 
 parser = argparse.ArgumentParser(
     description="Interpret or compile a calc program."
