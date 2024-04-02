@@ -71,8 +71,8 @@ from the terminal. The program has the same semantics as the interpreted
 program.
 
 ## Implementation structure
-The file `lexer.py` implement the lexer, the file `parser.py` implements the
-parser, the file `interpreter.py` implements the interpreter, and the file
-`codegen.py` implements the C code-generation. The file `variables.py` contains
-variable related helper functions and the file `calc` is the main entry point to
-the calc compiler/interpreter.
+The file `calclexer.py` implement the lexer, the file `calcparser.py` implements
+the parser, the file `calcinterpreter.py` implements the interpreter, and the
+file `calccodegen.py` implements the C code-generation. The file
+`calcvariables.py` contains variable related helper functions and the file
+`calc` is the main entry point to the calc compiler/interpreter.
