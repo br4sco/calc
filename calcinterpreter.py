@@ -4,6 +4,7 @@ from calcparser import Op, EOp
 def interpret(env, expr):
     """Interprets an expression `expr` to a number in the environment `env`,
     where `env` is a dictionary from variable names to integer values."""
+
     if not expr:
         return None
 
