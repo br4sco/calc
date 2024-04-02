@@ -60,7 +60,7 @@ def _parse(tokens):
 
 
 def parse(tokens):
-    """Parses a seqence if `tokens` into an expression."""
+    """Parses a seqence of `tokens` into an expression."""
     return _parse(tokens.copy())
 
 
