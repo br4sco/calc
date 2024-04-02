@@ -20,8 +20,7 @@ int main() {{
         return """
     int {var};
     printf(\"Give an integer value to {var}: \");
-    scanf(\"%d\", &{var});
-""".format(
+    scanf(\"%d\", &{var});""".format(
             var=var
         )
 
@@ -47,8 +46,8 @@ int main() {{
         # Generate main body
         body = """\
 {var_defs}
-    printf(\"result = %d\\n\", {expr});
-""".format(
+
+    printf(\"result = %d\\n\", {expr});""".format(
             var_defs=var_defs, expr=expr
         )
         return gen_main(body)
