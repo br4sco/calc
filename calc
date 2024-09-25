@@ -39,6 +39,9 @@ with args.file as file:
 
     if args.compile:
         code = codegen(variables, expr)
+        if code is None:
+            sys.exit(f"Compilation error")
+
         c_filename = Path(file.name).stem + ".c"
         f = open(c_filename, "w")
         f.write(code)
